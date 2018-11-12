@@ -1,0 +1,24 @@
+version: "3"
+services:
+  db:
+    image: mysql:8.0.12
+    environment:
+      - MYSQL_ROOT_PASSWORD=asdw
+      - MYSQL_DATABASE=lab2db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=asdw
+    ports:
+      - 3333:3306  
+  web:
+    image: spring-boot-docker
+    depends_on:
+      - db
+    ports:
+      - 8888:8888
+    environment:
+      - DATABASE_HOST=DB
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=lab2db
+      - DATABASE_PORT=3306    
+    
